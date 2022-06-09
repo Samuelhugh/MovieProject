@@ -4,6 +4,7 @@ const SECRET = process.env.JWT_SECRET;
 
 module.exports = {
   authenticate(req, res, next) {
+    console.log("AUTHENTICATED", req.cookies.userToken);
     jwt.verify(req.cookies.userToken, SECRET, (err, payload) => {
       if (err) {
         res.status(401).json({ verified: false });
