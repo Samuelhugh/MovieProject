@@ -36,7 +36,7 @@ const OneMovie = () => {
   const handleDelete = (movieID) => {
     axios
       .delete(
-        `http://localhost:8000/api/movies/delete/${movieID}`,{},
+        `http://localhost:8000/api/movies/delete/${movieID}`,
         {
           withCredentials: true,
         }

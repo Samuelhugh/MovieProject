@@ -10,7 +10,7 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/movies/byUser/${userName}`,{},
+      .get(`http://localhost:8000/api/movies/byUser/${userName}`,
       {
         withCredentials: true,
       })
