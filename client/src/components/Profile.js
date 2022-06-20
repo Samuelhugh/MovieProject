@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const Profile = () => {
   const { userName } = useParams();
@@ -10,33 +9,62 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/movies/byUser/${userName}`,
-      {
+      .get(`http://localhost:8000/api/movies/byUser/${userName}`, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log("USER MOVIES", movies);
-        const userToken = Cookies.get("userToken");
-        if (!userToken) {
-          navigate("/signup");
-        }
         setMovies(res.data);
       })
-      .catch((err) => console.log("PROFILE ERROR", err));
+      .catch((err) => {
+        console.log("Inside Error For useEffect In Profile: ", err);
+        if (err.response.status === 401) {
+          navigate("/signup");
+        }
+      });
   }, []);
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>You are viewing {userName} Profile</h1>
+    <div>
+      <h1 className="fw-light text-light">
+        Viewing{" "}
+        <small className="text-muted text-light fw-light">
+          {userName} Page!
+        </small>
+      </h1>
       {movies.map((movie) => (
-        <div key={movie._id}>
-          <p>{movie.title}</p>
-          <p>{movie.genre}</p>
-          <p>{movie.releaseYear}</p>
+        <div
+          key={movie._id}
+          className="card container border-info rounded-2 shadow text-light fst-italic w-50 mb-1 headerBg"
+        >
+          <img
+            src={movie.boxArtUrl}
+            className="card-img-top w-25 h-25 p-1 mx-auto"
+            alt={movie.title}
+          />
+          <div className="card-body">
+            <ul className="list-group w-25 mx-auto">
+              <li className="list-group-item border-info">
+                <strong className="card-title">Title: </strong>
+                {movie.title}
+              </li>
+              <li className="list-group-item border-info">
+                <strong className="card-text">Genre: </strong>
+                {movie.genre}
+              </li>
+              <li className="list-group-item border-info">
+                <Link
+                  className="btn btn-info btn-sm"
+                  to={`/homepage/info/${movie._id}`}
+                >
+                  View Movie Details!
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       ))}
     </div>
   );
-}
+};
 
 export default Profile;

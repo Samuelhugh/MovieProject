@@ -10,11 +10,9 @@ const Header = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("INSIDE userToken Check");
-    const userToken = Cookies.get('userToken');
+    const userToken = Cookies.get("userToken");
     if (userToken) {
       const userToShow = jwtDecode(userToken);
-      // console.log("USERTOSHOW", userToShow);
       setUser(userToShow);
     }
   }, [isLoggedIn]);
@@ -30,44 +28,46 @@ const Header = (props) => {
         }
       )
       .then((res) => {
-        console.log("Inside handleLogout for Header");
         Cookies.remove("userToken");
         setUser(null);
         navigate("/login");
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Inside Error In Header: ", err);
       });
   };
 
   return (
-    <header className="header">
-      <h1>Movies List!</h1>
-      <NavLink className="nav-link" to={"/homepage"}>
-        Home
-      </NavLink>
-      <span> | </span>
-      <NavLink className="nav-link" to={"/homepage/new"}>
-        New Movie
-      </NavLink>
-      <span> | </span>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        {user ? (
-          <div>
-            <h3>
-              Hello, {user.firstName} {user.lastName}
+    <header className="headerBg">
+      <div className="container">
+        <h1 className="text-light fw-light">Nostalgia Reels! :)</h1>
+        <div className="d-flex justify-content-between align-items-center">
+          {user ? (
+            <h3 className="text-light mt-1">
+              <em>
+                Hello, {user.firstName} {user.lastName}!
+              </em>
             </h3>
-            <span> | </span>
-            <button onClick={(e) => handleLogout(e)}>Logout</button>
-          </div>
-        ) : null}
-        <button onClick={(e) => handleLogout(e)}>Logout</button>
+          ) : null}
+          <nav className="nav">
+            <NavLink className="btn btn-info btn-sm me-3" to={"/homepage"}>
+              Home
+            </NavLink>
+            <NavLink className="btn btn-info btn-sm me-3" to={"/homepage/new"}>
+              New Movie
+            </NavLink>
+            {user ? (
+              <button
+                className="btn btn-outline-info btn-sm me-3"
+                onClick={(e) => handleLogout(e)}
+              >
+                Logout
+              </button>
+            ) : null}
+          </nav>
+        </div>
       </div>
+      <hr />
     </header>
   );
 };

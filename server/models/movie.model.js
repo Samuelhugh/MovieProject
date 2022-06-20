@@ -77,11 +77,17 @@ const MovieSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    opinions: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Opinion",
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-const Movie = mongoose.model("Movie", MovieSchema);
+const Movie = new mongoose.model("Movie", MovieSchema);
 module.exports = Movie;

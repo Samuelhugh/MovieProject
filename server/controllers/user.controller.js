@@ -39,7 +39,6 @@ module.exports.register = async (req, res) => {
         },
       });
   } catch (e) {
-    // so could I redirect here (or the backend in general?)
     console.log("ERROR IN USER REGISTRATION: ", e);
     res.status(400).json(e);
   }

@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
-  // const [email, setEmail] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [user, setUser] = useState({
     userName: "",
     firstName: "",
@@ -17,7 +12,7 @@ const Register = () => {
     confirmPassword: "",
   });
   const [confirmMsg, setConfirmMsg] = useState("");
-  const [errors, setErrors] = useState({}); // May need ""
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -33,7 +28,6 @@ const Register = () => {
     axios
       .post("http://localhost:8000/api/user/register", user)
       .then((res) => {
-        console.log(res.data);
         setUser({
           userName: "",
           firstName: "",
@@ -43,78 +37,135 @@ const Register = () => {
           confirmPassword: "",
         });
         setErrors({});
-        setConfirmMsg("Thank You For Registering, You Can Now Log In!");
+        setConfirmMsg("Thank You For Signing Up, You Can Now Sign In!");
         navigate("/signup");
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Inside Error For handleSubmit In Register: ", err);
         setErrors(err.response.data.errors);
       });
   };
 
   return (
-    <>
-      {confirmMsg ? <p>{confirmMsg}</p> : null}
+    <div className="container w-50">
+      {confirmMsg ? <p className="text-success">{confirmMsg}</p> : null}
+      <h1 className="text-light fw-light">Registration</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="userName">UserName</label>
-        {errors.userName ? <p>{errors.userName.message}</p> : null}
-        <input
-          type="text"
-          name="userName"
-          id="userName"
-          value={user.userName}
-          onChange={handleChange}
-        />
-        <label htmlFor="firstName">firstName</label>
-        {errors.firstName ? <p>{errors.firstName.message}</p> : null}
-        <input
-          type="text"
-          name="firstName"
-          id="firstName"
-          value={user.firstName}
-          onChange={handleChange}
-        />
-        <label htmlFor="lastName">lastName</label>
-        {errors.lastName ? <p>{errors.lastName.message}</p> : null}
-        <input
-          type="text"
-          name="lastName"
-          id="lastName"
-          value={user.lastName}
-          onChange={handleChange}
-        />
-        <label htmlFor="email">Email</label>
-        {errors.email ? <p>{errors.email.message}</p> : null}
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={user.email}
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        {errors.password ? <p>{errors.password.message}</p> : null}
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={user.password}
-          onChange={handleChange}
-        />
-        <label htmlFor="confirmPassword">ConfirmPassword</label>
-        {errors.confirmPassword ? (
-          <p>{errors.confirmPassword.message}</p>
-        ) : null}
-        <input
-          type="password"
-          name="confirmPassword"
-          id="confirmPassword"
-          value={user.confirmPassword}
-          onChange={handleChange}
-        />
-        <button>Sign Up!</button>
+        <div className="row row-cols-2 justify-content-evenly align-items-end text-start">
+          <div className="col-sm-5">
+            <label htmlFor="userName" className="fst-italic text-light">
+              Username
+            </label>
+            {errors.userName ? (
+              <p className="text-danger">{errors.userName.message}</p>
+            ) : null}
+            <input
+              className="form-control"
+              placeholder="Username"
+              aria-label="Username"
+              type="text"
+              name="userName"
+              id="userName"
+              value={user.userName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-sm-5">
+            <label htmlFor="firstName" className="fst-italic text-light">
+              First Name
+            </label>
+            {errors.firstName ? (
+              <p className="text-danger">{errors.firstName.message}</p>
+            ) : null}
+            <input
+              className="form-control"
+              placeholder="First Name"
+              aria-label="First Name"
+              type="text"
+              name="firstName"
+              id="firstName"
+              value={user.firstName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-sm-5">
+            <label htmlFor="lastName" className="fst-italic text-light">
+              Last Name
+            </label>
+            {errors.lastName ? (
+              <p className="text-danger">{errors.lastName.message}</p>
+            ) : null}
+            <input
+              className="form-control"
+              placeholder="Last Name"
+              aria-label="Last Name"
+              type="text"
+              name="lastName"
+              id="lastName"
+              value={user.lastName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-sm-5">
+            <label htmlFor="email" className="fst-italic text-light">
+              Email
+            </label>
+            {errors.email ? (
+              <p className="text-danger">{errors.email.message}</p>
+            ) : null}
+            <input
+              className="form-control"
+              placeholder="Email"
+              aria-label="Email"
+              type="email"
+              name="email"
+              id="email"
+              value={user.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-sm-5">
+            <label htmlFor="password" className="fst-italic text-light">
+              Password
+            </label>
+            {errors.password ? (
+              <p className="text-danger">{errors.password.message}</p>
+            ) : null}
+            <input
+              className="form-control"
+              placeholder="Password"
+              aria-label="Password"
+              type="password"
+              name="password"
+              id="password"
+              value={user.password}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-sm-5">
+            <label htmlFor="confirmPassword" className="fst-italic text-light">
+              Confirm Password
+            </label>
+            {errors.confirmPassword ? (
+              <p className="text-danger">{errors.confirmPassword.message}</p>
+            ) : null}
+            <input
+              className="form-control"
+              placeholder="Confirm Password"
+              aria-label="Confirm Password"
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              value={user.confirmPassword}
+              onChange={handleChange}
+            />
+          </div>
+          <button className="btn btn-outline-light btn-sm-2 mt-4">
+            Sign me up!
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 

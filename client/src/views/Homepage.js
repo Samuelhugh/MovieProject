@@ -9,7 +9,6 @@ const Homepage = (props) => {
   return (
     <div>
       <Header isLoggedIn={isLoggedIn} />
-      <hr />
       <AllMovies movies={movies} setMovies={setMovies} />
     </div>
   );

@@ -9,7 +9,6 @@ const ShowForm = (props) => {
   return (
     <div>
       <Header isLoggedIn={isLoggedIn} />
-      <hr />
       <MovieForm movies={movies} setMovies={setMovies} />
     </div>
   );
