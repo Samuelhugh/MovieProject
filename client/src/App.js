@@ -1,82 +1,27 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RegLog from "./views/RegLog";
-import Login from "./components/Login";
-import Homepage from "./views/Homepage";
-import ShowForm from "./views/ShowForm";
-import UpdateForm from "./views/UpdateForm";
-import DisplayOne from "./views/DisplayOne";
-import ShowProfile from "./views/ShowProfile";
-import "./App.css";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RegLog from './views/RegLog';
+import Login from './components/Login';
+import AllMovies from './components/AllMovies';
+import MovieForm from './components/MovieForm';
+import UpdateMovie from './components/UpdateMovie';
+import OneMovie from './components/OneMovie';
+import Profile from './components/Profile';
+import './App.css';
 
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route
-            element={<RegLog setIsLoggedIn={setIsLoggedIn} />}
-            default
-            path="/signup"
-          />
-          <Route
-            element={<Login setIsLoggedIn={setIsLoggedIn} />}
-            path="/login"
-          />
-          <Route
-            element={
-              <Homepage
-                isLoggedIn={isLoggedIn}
-                movies={movies}
-                setMovies={setMovies}
-              />
-            }
-            path="/homepage"
-          />
-          <Route
-            element={
-              <ShowForm
-                isLoggedIn={isLoggedIn}
-                movies={movies}
-                setMovies={setMovies}
-              />
-            }
-            path="/homepage/new"
-          />
-          <Route
-            element={
-              <UpdateForm
-                isLoggedIn={isLoggedIn}
-                movies={movies}
-                setMovies={setMovies}
-              />
-            }
-            path="/homepage/edit/:id"
-          />
-          <Route
-            element={
-              <DisplayOne
-                isLoggedIn={isLoggedIn}
-                movies={movies}
-                setMovies={setMovies}
-              />
-            }
-            path="/homepage/info/:id"
-          />
-          <Route
-            element={
-              <ShowProfile
-                isLoggedIn={isLoggedIn}
-                movies={movies}
-                setMovies={setMovies}
-              />
-            }
-            path="/homepage/profile/:userName"
-          />
+          <Route element={<RegLog />} path="/register" default />
+          <Route element={<Login />} path="/login" />
+          <Route element={<AllMovies />} path="/homepage" />
+          <Route element={<MovieForm />} path="/homepage/new" />
+          <Route element={<UpdateMovie />} path="/homepage/update/:id" />
+          <Route element={<OneMovie />} path="/homepage/info/:id" />
+          <Route element={<Profile />} path="/homepage/profile/:userName" />
         </Routes>
       </BrowserRouter>
     </div>

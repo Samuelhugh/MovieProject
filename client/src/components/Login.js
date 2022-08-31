@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const Login = ({ setIsLoggedIn }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:8000/api/user/login",
+        'http://localhost:8000/api/user/login',
         {
           email: email,
           password: password,
@@ -22,12 +22,11 @@ const Login = ({ setIsLoggedIn }) => {
         }
       )
       .then((res) => {
-        setIsLoggedIn(true);
-        setErrors("");
-        navigate("/homepage");
+        setErrors('');
+        navigate('/homepage');
       })
       .catch((err) => {
-        console.log("Inside Error For handleLogin In Login: ", err);
+        console.log(`Inside Error For handleLogin In Login ${err}`);
         setErrors(err.response.data.message);
       });
   };
@@ -62,9 +61,7 @@ const Login = ({ setIsLoggedIn }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="btn btn-outline-light btn-sm-4 mt-4">
-            Sign in!
-          </button>
+          <button className="btn btn-outline-light btn-sm-4 mt-4">Login</button>
         </div>
       </form>
     </div>

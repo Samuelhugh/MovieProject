@@ -1,46 +1,47 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
-const Header = (props) => {
-  const { isLoggedIn } = props;
+const Header = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userToken = Cookies.get("userToken");
+    const userToken = Cookies.get('userToken');
     if (userToken) {
       const userToShow = jwtDecode(userToken);
       setUser(userToShow);
+    } else {
+      navigate('/register');
     }
-  }, [isLoggedIn]);
+  }, []);
 
   const handleLogout = (e) => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:8000/api/user/logout",
+        'http://localhost:8000/api/user/logout',
         {},
         {
           withCredentials: true,
         }
       )
       .then((res) => {
-        Cookies.remove("userToken");
+        Cookies.remove('userToken');
         setUser(null);
-        navigate("/login");
+        navigate('/login');
       })
       .catch((err) => {
-        console.log("Inside Error In Header: ", err);
+        console.log(`Inside Error In Header ${err}`);
       });
   };
 
   return (
     <header className="headerBg">
       <div className="container">
-        <h1 className="text-light fw-light">Nostalgia Reels! :)</h1>
+        <h1 className="text-light fw-light">Reel Feels</h1>
         <div className="d-flex justify-content-between align-items-center">
           {user ? (
             <h3 className="text-light mt-1">
@@ -50,10 +51,10 @@ const Header = (props) => {
             </h3>
           ) : null}
           <nav className="nav">
-            <NavLink className="btn btn-info btn-sm me-3" to={"/homepage"}>
+            <NavLink className="btn btn-info btn-sm me-3" to={'/homepage'}>
               Home
             </NavLink>
-            <NavLink className="btn btn-info btn-sm me-3" to={"/homepage/new"}>
+            <NavLink className="btn btn-info btn-sm me-3" to={'/homepage/new'}>
               New Movie
             </NavLink>
             {user ? (

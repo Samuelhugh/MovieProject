@@ -6,7 +6,7 @@ UserSchema = new mongoose.Schema(
     userName: {
       type: String,
       unique: true,
-      required: [true, "A UserName is Required!"],
+      required: [true, "A Username is Required!"],
       minlength: [2, "2 Character Minimum!"],
       maxlength: [15, "15 Character Max"],
     },

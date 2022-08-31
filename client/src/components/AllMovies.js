@@ -1,53 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import io from "socket.io-client";
-// import Cookies from "js-cookie";
-// import jwtDecode from "jwt-decode";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import io from 'socket.io-client';
+import axios from 'axios';
+import Header from './Header';
 
-const AllMovies = (props) => {
-  const { movies, setMovies } = props;
-  const [socket] = useState(() => io(":8000"));
-  // const [user, setUser] = useState(null);
+// need split(",") maybe
+const AllMovies = () => {
+  const [movies, setMovies] = useState([]);
+  const [socket] = useState(() => io(':8000'));
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log("Inside Token Check In Header");
-  //   const userToken = Cookies.get("userToken");
-  //   if (userToken) {
-  //     const userToShow = jwtDecode(userToken);
-  //     setUser(userToShow);
-  //   }
-  // }, []);
-
   useEffect(() => {
-    socket.on("connect", () => {
-      socket.on("movieDeleted", (allMovies) => {
+    socket.on('connect', () => {
+      socket.on('movieDeleted', (allMovies) => {
         setMovies(allMovies);
       });
     });
     axios
-      .get("http://localhost:8000/api/movies/all", {
+      .get('http://localhost:8000/api/movies/all', {
         withCredentials: true,
       })
       .then((res) => {
         setMovies(res.data);
       })
       .catch((err) => {
-        console.log("Inside Error For useEffect In AllMovies: ", err);
+        console.log(`Inside Error For useEffect In AllMovies ${err}`);
         if (err.response.status === 401) {
-          navigate("/signup");
+          navigate('/register');
         }
       });
     return () => socket.disconnect(true);
   }, []);
 
   const handleDelete = (movieID) => {
-    socket.emit("clientDeletedMovie", movieID);
+    socket.emit('clientDeletedMovie', movieID);
   };
 
   return (
     <>
+      <Header />
       <h4 className="textLine lead">
         Movies Are In Order From Newest To Oldest!
       </h4>
@@ -91,6 +82,7 @@ const AllMovies = (props) => {
                     <Link
                       className="link-info textLink"
                       to={`/homepage/info/${movie._id}`}
+                      state={movie}
                     >
                       {movie.title}
                     </Link>
@@ -98,14 +90,12 @@ const AllMovies = (props) => {
                   <li className="list-group-item border-secondary">
                     <Link
                       className="link-info textLink me-4"
-                      to={`/homepage/edit/${movie._id}`}
+                      to={`/homepage/update/${movie._id}`}
+                      state={movie}
                     >
                       Edit
                     </Link>
-                    <button
-                      className="btn btn-outline-info btn-sm"
-                      onClick={() => handleDelete(movie._id)}
-                    >
+                    <button onClick={() => handleDelete(movie._id)}>
                       Delete
                     </button>
                   </li>

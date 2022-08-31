@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import MainDelete from './MainDelete';
+import Header from './Header';
 
 const Profile = () => {
   const { userName } = useParams();
@@ -16,17 +18,22 @@ const Profile = () => {
         setMovies(res.data);
       })
       .catch((err) => {
-        console.log("Inside Error For useEffect In Profile: ", err);
+        console.log(`Inside Error For useEffect In Profile ${err}`);
         if (err.response.status === 401) {
-          navigate("/signup");
+          navigate('/register');
         }
       });
   }, []);
 
+  const handleDelete = () => {
+    navigate(`/homepage/profile/${userName}`);
+  };
+
   return (
     <div>
+      <Header />
       <h1 className="fw-light text-light">
-        Viewing{" "}
+        Viewing{' '}
         <small className="text-muted text-light fw-light">
           {userName} Page!
         </small>
@@ -58,6 +65,10 @@ const Profile = () => {
                 >
                   View Movie Details!
                 </Link>
+                <MainDelete
+                  movieId={movie._id}
+                  deletionHandler={handleDelete}
+                />
               </li>
             </ul>
           </div>

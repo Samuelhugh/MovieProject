@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
   const [user, setUser] = useState({
-    userName: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    userName: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
-  const [confirmMsg, setConfirmMsg] = useState("");
+  const [confirmMsg, setConfirmMsg] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -26,22 +26,22 @@ const Register = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/api/user/register", user)
+      .post('http://localhost:8000/api/user/register', user)
       .then((res) => {
         setUser({
-          userName: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
+          userName: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
         });
         setErrors({});
-        setConfirmMsg("Thank You For Signing Up, You Can Now Sign In!");
-        navigate("/signup");
+        setConfirmMsg('Thank You For Signing Up, You Can Now Sign In!');
+        navigate('/register');
       })
       .catch((err) => {
-        console.log("Inside Error For handleSubmit In Register: ", err);
+        console.log(`Inside Error For handleSubmit In Register ${err}`);
         setErrors(err.response.data.errors);
       });
   };
@@ -49,7 +49,7 @@ const Register = () => {
   return (
     <div className="container w-50">
       {confirmMsg ? <p className="text-success">{confirmMsg}</p> : null}
-      <h1 className="text-light fw-light">Registration</h1>
+      <h1 className="text-light fw-light">Sign up!</h1>
       <form onSubmit={handleSubmit}>
         <div className="row row-cols-2 justify-content-evenly align-items-end text-start">
           <div className="col-sm-5">
@@ -161,7 +161,7 @@ const Register = () => {
             />
           </div>
           <button className="btn btn-outline-light btn-sm-2 mt-4">
-            Sign me up!
+            Sign up
           </button>
         </div>
       </form>
