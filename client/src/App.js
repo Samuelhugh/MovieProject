@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import RegLog from './views/RegLog';
 import Login from './components/Login';
 import AllMovies from './components/AllMovies';
@@ -14,21 +14,19 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalProvider>
-        <div className="App">
-          <Routes>
-            <Route element={<RegLog />} path="/register" default />
-            <Route element={<Login />} path="/login" />
-            <Route element={<AllMovies />} path="/homepage" />
-            <Route element={<MovieForm />} path="/homepage/new" />
-            <Route element={<UpdateMovie />} path="/homepage/update/:id" />
-            <Route element={<OneMovie />} path="/homepage/info/:id" />
-            <Route element={<Profile />} path="/homepage/profile/:userName" />
-          </Routes>
-        </div>
-      </GlobalProvider>
-    </BrowserRouter>
+    <GlobalProvider>
+      <div className="App">
+        <Routes>
+          <Route element={<RegLog />} path="/register" default />
+          <Route element={<Login />} path="/login" />
+          <Route element={<AllMovies />} path="/homepage" />
+          <Route element={<MovieForm />} path="/homepage/new" />
+          <Route element={<UpdateMovie />} path="/homepage/update/:id" />
+          <Route element={<OneMovie />} path="/homepage/info/:id" />
+          <Route element={<Profile />} path="/homepage/profile/:userName" />
+        </Routes>
+      </div>
+    </GlobalProvider>
   );
 }
 
