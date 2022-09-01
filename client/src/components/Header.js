@@ -41,12 +41,12 @@ const Header = () => {
   return (
     <header className="headerBg">
       <div className="container">
-        <h1 className="text-light fw-light">Reel Feels</h1>
+        <h1 className="text-light fw-light">ReelFeels</h1>
         <div className="d-flex justify-content-between align-items-center">
           {user ? (
             <h3 className="text-light mt-1">
               <em>
-                Hello, {user.firstName} {user.lastName}!
+                Welcome, {user.firstName} {user.lastName}!
               </em>
             </h3>
           ) : null}

@@ -8,7 +8,7 @@ const RegLog = (props) => {
   return (
     <div className="mb-2">
       <h1 className="bg-secondary text-info fw-light">
-        The Home to Reel Feels!
+        The Home to ReelFeels!
       </h1>
       <div className="d-flex">
         <Registration />
