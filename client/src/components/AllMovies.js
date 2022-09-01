@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
 import axios from 'axios';
 import Header from './Header';
+import { GlobalContext } from '../context/MyContext';
 
-// need split(",") maybe
-const AllMovies = () => {
-  const [movies, setMovies] = useState([]);
+const AllMovies = (props) => {
+  const { getAllMovies, movies } = useContext(GlobalContext);
   const [socket] = useState(() => io(':8000'));
   const navigate = useNavigate();
 
   useEffect(() => {
     socket.on('connect', () => {
       socket.on('movieDeleted', (allMovies) => {
-        setMovies(allMovies);
+        getAllMovies(allMovies);
       });
     });
     axios
@@ -21,7 +21,7 @@ const AllMovies = () => {
         withCredentials: true,
       })
       .then((res) => {
-        setMovies(res.data);
+        getAllMovies(res.data);
       })
       .catch((err) => {
         console.log(`Inside Error For useEffect In AllMovies ${err}`);
