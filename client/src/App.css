@@ -1,10 +1,15 @@
 .App {
   text-align: center;
 }
-
-.headerBg {
-  background-color: #331270;
+body {
+  background-color: #ada65cfc;
 }
+/* .backgroundColor {
+  background-color: #d7fdf89c;
+} */
+/* .headerBg {
+  background-color: #331270;
+} */
 
 .textLine {
   text-decoration-line: overline;
