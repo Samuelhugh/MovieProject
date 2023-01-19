@@ -8,6 +8,10 @@ import MovieForm from './components/MovieForm';
 import UpdateMovie from './components/UpdateMovie';
 import OneMovie from './components/OneMovie';
 import Profile from './components/Profile';
+// import Test from './components/ApiForm';
+import Welcome from './components/Welcome';
+import Registration from './components/Registration';
+import AltAllMovies from './components/AlternativeAllMovies';
 import { GlobalProvider } from './context/MyContext';
 
 import './App.css';
@@ -17,7 +21,11 @@ function App() {
     <GlobalProvider>
       <div className="App">
         <Routes>
-          <Route element={<RegLog />} path="/register" default />
+          {/* <Route element={<Test />} path="/testing" /> */}
+          <Route element={<AltAllMovies />} path="/alt" />
+          <Route element={<Welcome />} path="/" default />
+          <Route element={<Registration />} path="/registration" />
+          {/* <Route element={<RegLog />} path="/register" /> */}
           <Route element={<Login />} path="/login" />
           <Route element={<AllMovies />} path="/homepage" />
           <Route element={<MovieForm />} path="/homepage/new" />
