@@ -14,7 +14,7 @@ const Header = () => {
       const userToShow = jwtDecode(userToken);
       setUser(userToShow);
     } else {
-      navigate('/register');
+      navigate('/');
     }
   }, []);
 
@@ -39,27 +39,34 @@ const Header = () => {
   };
 
   return (
-    <header className="headerBg">
+    <header>
       <div className="container">
-        <h1 className="text-light fw-light">ReelFeels</h1>
+        <h1 className="text-info fw-bold">Welcome to the Home of ReelFeels!</h1>
         <div className="d-flex justify-content-between align-items-center">
           {user ? (
-            <h3 className="text-light mt-1">
-              <em>
-                Welcome, {user.firstName} {user.lastName}!
-              </em>
+            <h3 className="text-light fw-light mt-2">
+              Hello, {user.firstName} {user.lastName}!
             </h3>
           ) : null}
-          <nav className="nav">
-            <NavLink className="btn btn-info btn-sm me-3" to={'/homepage'}>
-              Home
+          <nav className="nav mt-1">
+            <NavLink
+              style={{ 'font-size': 'small' }}
+              className="fw-light btn btn-light text-dark btn-sm me-3"
+              to={'/homepage'}
+            >
+              Dashboard
             </NavLink>
-            <NavLink className="btn btn-info btn-sm me-3" to={'/homepage/new'}>
-              New Movie
+            <NavLink
+              style={{ 'font-size': 'small' }}
+              className="fw-light btn btn-light text-dark btn-sm me-3"
+              to={'/homepage/new'}
+            >
+              Create New Movie Suggestion
             </NavLink>
             {user ? (
               <button
-                className="btn btn-outline-info btn-sm me-3"
+                style={{ 'font-size': 'small' }}
+                className="fw-light btn btn-light text-dark btn-sm me-3"
                 onClick={(e) => handleLogout(e)}
               >
                 Logout
