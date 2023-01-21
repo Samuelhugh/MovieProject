@@ -1,14 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
-import RegLog from './views/RegLog';
+// import RegLog from './views/RegLog';
 import Login from './components/Login';
 import AllMovies from './components/AllMovies';
 import MovieForm from './components/MovieForm';
 import UpdateMovie from './components/UpdateMovie';
 import OneMovie from './components/OneMovie';
 import Profile from './components/Profile';
-// import Test from './components/ApiForm';
+import Test from './components/ApiForm';
 import Welcome from './components/Welcome';
 import Registration from './components/Registration';
 import AltAllMovies from './components/AlternativeAllMovies';
@@ -21,7 +21,7 @@ function App() {
     <GlobalProvider>
       <div className="App">
         <Routes>
-          {/* <Route element={<Test />} path="/testing" /> */}
+          <Route element={<Test />} path="/testing" />
           <Route element={<AltAllMovies />} path="/alt" />
           <Route element={<Welcome />} path="/" default />
           <Route element={<Registration />} path="/registration" />
