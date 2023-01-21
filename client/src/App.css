@@ -4,17 +4,60 @@
 body {
   background-color: #ada65cfc;
 }
-/* .backgroundColor {
-  background-color: #d7fdf89c;
-} */
-/* .headerBg {
-  background-color: #331270;
-} */
 
+/* #ada65cfc */
+/* rgb(0,191,230) */
+
+.headerBg {
+  background-color: #ada65cfc;
+}
+
+/* Welcome Page Title */
+.titleMargin {
+  margin-right: 19px;
+}
+/* Welcome Page Home Image */
+.homeImage {
+  display: flex;
+  margin-top: 100px;
+  margin-left: 400px;
+  height: 400px;
+  width: 505px;
+  filter: drop-shadow(
+    0 -6mm 4mm rgb(0, 191, 230)
+  );
+}
+/* Alt All Movies Component */
 .textLine {
   text-decoration-line: overline;
 }
-
 .textLink {
   text-decoration: none;
+}
+.imageSize {
+  height: 145px;
+}
+.cardSizing {
+  width: 375px;
+}
+/* One Movie */
+.underlineWords {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+/* Movie Form
+.marginBack {
+  margin-right: 1000px;
+} */
+/* Log-in Theme Styling */
+.themeStyleLog {
+  margin-top: 240px;
+  margin-left: 680px;
+  filter: drop-shadow(0 -6mm 4mm rgb(0, 191, 230));
+}
+/* Registration Theme Style */
+.regTheme {
+  margin-top: 120px;
+  margin-left: 675px;
+  filter: drop-shadow(0 -6mm 4mm rgb(0, 191, 230));
 }
