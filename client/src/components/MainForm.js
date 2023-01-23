@@ -24,7 +24,7 @@ const MainForm = (props) => {
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
-        <div className="container row g-3 w-50 mx-auto border border-secondary m-1 p-1 rounded-2">
+        <div className="container row g-3 w-50 mx-auto mb-4">
           <div className="input-group mb-1 col-sm-5">
             {errors.title && (
               <p className="text-danger">{errors.title.message}</p>
@@ -161,19 +161,21 @@ const MainForm = (props) => {
             </select>
           </div>
 
-          <div className="form-check">
-            <label className="form-check-label">On Netflix</label>
+          <div className="d-flex justify-content-center">
             {/* may need to wrap input with label tags, also add 2 more checkboxes */}
             <input
-              className="form-check-input"
+              className="m-1"
               type="checkbox"
               name="isOnNetflix"
               checked={newMovieOrUpdateMovie.isOnNetflix}
               onChange={onChangeHandler}
             />
+            <label className="form-check-label">On Netflix?</label>
           </div>
 
-          <button className="btn btn-outline-secondary">{buttonText}</button>
+          <button className="btn btn-outline-light text-dark">
+            {buttonText}
+          </button>
         </div>
       </form>
     </div>
