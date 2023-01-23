@@ -51,13 +51,13 @@ const MovieForm = () => {
   return (
     <div>
       <Header />
-      <h1 className="text-light fw-light">Create your Movie!</h1>
+      <h1 className="text-light fw-light mb-4">Create Your Movie!</h1>
       <MainForm
         onSubmitHandler={handleOnSubmit}
         onChangeHandler={handleOnChange}
         newMovieOrUpdateMovie={newMovie}
         errors={errors}
-        buttonText="Send It!"
+        buttonText="Submit"
       />
     </div>
   );
