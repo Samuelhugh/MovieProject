@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
+import Reel from '../assets/reel.jpg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -34,14 +35,24 @@ const Login = () => {
   return (
     <div className="container w-50">
       <h1 className="text-light fw-light">Login</h1>
-      <p className="text-danger">{errors ? errors : null}</p>
+      <nav className="d-flex" style={{ 'margin-left': '37px' }}>
+        <NavLink className="fw-light btn btn-outline-info btn-sm" to={'/'}>
+          Back
+        </NavLink>
+      </nav>
+      <p
+        style={{ 'font-weight': '700', 'font-size': 'large' }}
+        className="text-danger"
+      >
+        {errors ? errors : null}
+      </p>
       <form onSubmit={handleLogin}>
         <div className="row row-cols-2 justify-content-evenly align-items-end text-start">
           <div className="col-sm-5">
-            <label className="fst-italic text-light">Email</label>
+            <label className="fw-italic text-light">E-mail Address</label>
             <input
-              className="form-control"
-              placeholder="Email"
+              className="fw-italic form-control"
+              placeholder="Email@gmail.com"
               aria-label="Email"
               type="email"
               name="email"
@@ -50,9 +61,9 @@ const Login = () => {
             />
           </div>
           <div className="col-sm-5">
-            <label className="fst-italic text-light">Password</label>
+            <label className="fw-italic text-light">Password</label>
             <input
-              className="form-control"
+              className="fw-italic form-control"
               placeholder="Password"
               aria-label="Password"
               type="password"
@@ -61,9 +72,18 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="btn btn-outline-light btn-sm-4 mt-4">Login</button>
+          <button className="fw-light btn btn-outline-light btn-sm-4 mt-4">
+            Log-In!
+          </button>
         </div>
       </form>
+      <span>
+        <img
+        className='themeStyleLog'
+          src={Reel}
+          alt="Movie Reel"
+        />
+      </span>
     </div>
   );
 };
