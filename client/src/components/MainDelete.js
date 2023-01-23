@@ -16,7 +16,7 @@ const MainDelete = (props) => {
   };
 
   return (
-    <button className="btn btn-outline-info btn-sm" onClick={deleteHandler}>
+    <button className="btn btn-outline-dark btn sm" onClick={deleteHandler}>
       Delete
     </button>
   );
