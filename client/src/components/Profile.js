@@ -38,18 +38,19 @@ const Profile = () => {
           {userName} Page!
         </small>
       </h1>
+      <div className='row row-cols-1 row-cols-md-2 g-4 mb-4 me-4 ms-4'>
       {movies.map((movie) => (
         <div
           key={movie._id}
-          className="card container border-info rounded-2 shadow text-light fst-italic w-50 mb-1 headerBg"
         >
+        <div className='card col border-info rounded-2 shadow fst-italic headerBg'>
           <img
             src={movie.boxArtUrl}
-            className="card-img-top w-25 h-25 p-1 mx-auto"
+            className="imageSize mx-auto mt-1"
             alt={movie.title}
           />
           <div className="card-body">
-            <ul className="list-group w-25 mx-auto">
+            <ul className="list-group w-50 mx-auto">
               <li className="list-group-item border-info">
                 <strong className="card-title">Title: </strong>
                 {movie.title}
@@ -65,15 +66,19 @@ const Profile = () => {
                 >
                   View Movie Details!
                 </Link>
+                <span className='ms-2'>
                 <MainDelete
                   movieId={movie._id}
                   deletionHandler={handleDelete}
                 />
+                </span>
               </li>
             </ul>
           </div>
         </div>
+      </div>
       ))}
+      </div>
     </div>
   );
 };
