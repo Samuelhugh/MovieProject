@@ -39,9 +39,9 @@ const OneMovie = (props) => {
     <>
       <Header />
       <h1>
-        <em className="text-light fw-light">Details about {movie.title}!</em>
+        <em className="text-light fw-light">Details about {movie.title}</em>
       </h1>
-      <div className="container border border-info w-50 headerBg text-info fst-italic">
+      <div className="container border border-light w-50 fst-italic mb-4">
         <img
           src={movie.boxArtUrl}
           className="rounded mx-auto d-block p-2"
@@ -49,42 +49,44 @@ const OneMovie = (props) => {
         />
         <div className="row justify-content-start flex-direction-row-reverse align-items-center">
           <div className="col">
-            <h4>Genre: </h4>
-            <h6>{movie.genre}</h6>
+            <h4 className='text-info underlineWords'>Genre: </h4>
+            <h6 className='text-light'>{movie.genre}</h6>
           </div>
           <div className="col">
-            <h4>Actors: </h4>
+            <h4 className='text-info underlineWords'>Actors: </h4>
             {movie.actors ? (
-              <h6>{movie.actors.join(',')}</h6>
+              <h6 className='text-light'>{movie.actors.join(',')}</h6>
             ) : (
-              <h6>No Actors to Display :/</h6>
+              <h6 className='text-light'>No Actors to Display :/</h6>
             )}
           </div>
         </div>
         <div className="row justify-content-center">
           <div className="col">
-            <h4>Rating: </h4>
-            <h6>{movie.rating}</h6>
+            <h4 className='text-info underlineWords'>Rating: </h4>
+            <h6 className='text-light'>{movie.rating}</h6>
           </div>
           <div className="col">
-            <h4>Movie Link: </h4>
+            <h4 className='text-info underlineWords'>Movie Link: </h4>
             {movie.movieLink ? (
-              <h6>{movie.movieLink}</h6>
+              <h6 className='text-light'>{movie.movieLink}</h6>
             ) : (
-              <h6>No Movie Link to Display :/</h6>
+              <h6 className='text-light'>No Movie Link to Display :/</h6>
             )}
           </div>
         </div>
         <div className="row justify-content-end">
           <div className="col">
-            <h4>Release Date: </h4>
-            <h6>{movie.releaseDate}</h6>
+            <h4 className='text-info underlineWords'>Release Date: </h4>
+            <h6 className='text-light'>{movie.releaseDate}</h6>
           </div>
           <div className="col">
-            <h4>Watch Length: </h4>
-            <h6>{movie.watchLength}</h6>
+            <h4 className='text-info underlineWords'>Watch Length: </h4>
+            <h6 className='text-light'>{movie.watchLength}</h6>
           </div>
+          <span className="mb-2">
           <MainDelete movieId={movie._id} deletionHandler={handleDelete} />
+          </span>
         </div>
       </div>
     </>
