@@ -78,7 +78,7 @@ const UpdateMovie = () => {
   return (
     <div>
       <Header />
-      <h1 className="text-light fw-light">Update {updateMovie.title}</h1>
+      <h1 className="text-light fw-light mb-4">Update {updateMovie.title}</h1>
       <MainForm
         onSubmitHandler={handleUpdateOnSubmit}
         onChangeHandler={handleUpdateOnChange}
