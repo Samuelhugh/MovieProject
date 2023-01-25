@@ -3,7 +3,7 @@ const { authenticate } = require('../config/jwt.config');
 
 module.exports = (app) => {
   app.post('/api/movies/create', authenticate, MovieController.createAnMovie);
-  app.get('/api/movies/all', authenticate, MovieController.findAllMovies);
+  app.get('/api/movies/all', MovieController.findAllMovies);
   app.get('/api/movies/one/:id', authenticate, MovieController.findOneMovie);
   app.get(
     '/api/movies/byUser/:userName',
