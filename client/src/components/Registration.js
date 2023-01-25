@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
+import Reel from '../assets/reel.jpg';
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -37,8 +38,8 @@ const Register = () => {
           confirmPassword: '',
         });
         setErrors({});
-        setConfirmMsg('Thank You For Signing Up, You Can Now Sign In!');
-        navigate('/register');
+        setConfirmMsg('Thank You For Signing Up, You Can Now Sign-In!');
+        navigate('/registration');
       })
       .catch((err) => {
         console.log(`Inside Error For handleSubmit In Register ${err}`);
@@ -48,19 +49,32 @@ const Register = () => {
 
   return (
     <div className="container w-50">
+      <h1 className="text-light fw-light">Sign-Up</h1>
       {confirmMsg ? <p className="text-success">{confirmMsg}</p> : null}
-      <h1 className="text-light fw-light">Sign up!</h1>
+      <nav
+        style={{ 'margin-left': '35px', 'margin-bottom': '10px' }}
+        className="d-flex"
+      >
+        <NavLink className="fw-light btn btn-outline-info btn-sm" to={'/'}>
+          Back
+        </NavLink>
+      </nav>
       <form onSubmit={handleSubmit}>
         <div className="row row-cols-2 justify-content-evenly align-items-end text-start">
           <div className="col-sm-5">
-            <label htmlFor="userName" className="fst-italic text-light">
+            <label htmlFor="userName" className="fw-italic text-light">
               Username
             </label>
             {errors.userName ? (
-              <p className="text-danger">{errors.userName.message}</p>
+              <p
+                style={{ 'font-weight': '700', 'font-size': 'medium' }}
+                className="text-danger"
+              >
+                {errors.userName.message}
+              </p>
             ) : null}
             <input
-              className="form-control"
+              className="fw-italic form-control"
               placeholder="Username"
               aria-label="Username"
               type="text"
@@ -71,14 +85,19 @@ const Register = () => {
             />
           </div>
           <div className="col-sm-5">
-            <label htmlFor="firstName" className="fst-italic text-light">
+            <label htmlFor="firstName" className="fw-italic text-light">
               First Name
             </label>
             {errors.firstName ? (
-              <p className="text-danger">{errors.firstName.message}</p>
+              <p
+                style={{ 'font-weight': '700', 'font-size': 'medium' }}
+                className="text-danger"
+              >
+                {errors.firstName.message}
+              </p>
             ) : null}
             <input
-              className="form-control"
+              className="fw-italic form-control"
               placeholder="First Name"
               aria-label="First Name"
               type="text"
@@ -89,14 +108,19 @@ const Register = () => {
             />
           </div>
           <div className="col-sm-5">
-            <label htmlFor="lastName" className="fst-italic text-light">
+            <label htmlFor="lastName" className="fw-italic text-light">
               Last Name
             </label>
             {errors.lastName ? (
-              <p className="text-danger">{errors.lastName.message}</p>
+              <p
+                style={{ 'font-weight': '700', 'font-size': 'medium' }}
+                className="text-danger"
+              >
+                {errors.lastName.message}
+              </p>
             ) : null}
             <input
-              className="form-control"
+              className="fw-italic form-control"
               placeholder="Last Name"
               aria-label="Last Name"
               type="text"
@@ -107,15 +131,20 @@ const Register = () => {
             />
           </div>
           <div className="col-sm-5">
-            <label htmlFor="email" className="fst-italic text-light">
-              Email
+            <label htmlFor="email" className="fw-italic text-light">
+              E-mail Address
             </label>
             {errors.email ? (
-              <p className="text-danger">{errors.email.message}</p>
+              <p
+                style={{ 'font-weight': '700', 'font-size': 'medium' }}
+                className="text-danger"
+              >
+                {errors.email.message}
+              </p>
             ) : null}
             <input
-              className="form-control"
-              placeholder="Email"
+              className="fw-italic form-control"
+              placeholder="Email@gmail.com"
               aria-label="Email"
               type="email"
               name="email"
@@ -125,14 +154,19 @@ const Register = () => {
             />
           </div>
           <div className="col-sm-5">
-            <label htmlFor="password" className="fst-italic text-light">
+            <label htmlFor="password" className="fw-italic text-light">
               Password
             </label>
             {errors.password ? (
-              <p className="text-danger">{errors.password.message}</p>
+              <p
+                style={{ 'font-weight': '700', 'font-size': 'medium' }}
+                className="text-danger"
+              >
+                {errors.password.message}
+              </p>
             ) : null}
             <input
-              className="form-control"
+              className="fw-italic form-control"
               placeholder="Password"
               aria-label="Password"
               type="password"
@@ -143,14 +177,19 @@ const Register = () => {
             />
           </div>
           <div className="col-sm-5">
-            <label htmlFor="confirmPassword" className="fst-italic text-light">
+            <label htmlFor="confirmPassword" className="fw-italic text-light">
               Confirm Password
             </label>
             {errors.confirmPassword ? (
-              <p className="text-danger">{errors.confirmPassword.message}</p>
+              <p
+                style={{ 'font-weight': '700', 'font-size': 'medium' }}
+                className="text-danger"
+              >
+                {errors.confirmPassword.message}
+              </p>
             ) : null}
             <input
-              className="form-control"
+              className="fw-italic form-control"
               placeholder="Confirm Password"
               aria-label="Confirm Password"
               type="password"
@@ -160,11 +199,18 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <button className="btn btn-outline-light btn-sm-2 mt-4">
-            Sign up
+          <button className="fw-light btn btn-outline-light btn-sm-2 mt-4">
+            Signup!
           </button>
         </div>
       </form>
+      <span>
+        <img
+        className='regTheme'
+          src={Reel}
+          alt="Movie Reel"
+        />
+      </span>
     </div>
   );
 };
