@@ -41,7 +41,7 @@ const AlternativeAllMovies = (props) => {
         </NavLink>
         <NavLink
           className="fw-italic btn btn-outline-info btn-sm me-3"
-          to={'/testing'}
+          to={'/top'}
         >
           View 12 Current Popular Movies
         </NavLink>
@@ -59,11 +59,17 @@ const AlternativeAllMovies = (props) => {
         {movies.map((movie) => (
           <div key={movie._id}>
             <div className="col cardSizing card m-auto mb-2 rounded border shadow border-dark">
-              <img className="imageSize w-25 p-3 m-auto" src={movie.boxArtUrl} alt={movie.title} />
+              <img
+                className="imageSize w-25 p-3 m-auto"
+                src={movie.boxArtUrl}
+                alt={movie.title}
+              />
               <div className="card-body">
                 <h4 className="card-title">{movie.title}</h4>
                 <h5 className="card-text">{movie.rating}</h5>
-                <h5 className="card-text">Created by: {movie.createdBy.userName}</h5>
+                <h5 className="card-text">
+                  Created by: {movie.createdBy.userName}
+                </h5>
               </div>
             </div>
           </div>
