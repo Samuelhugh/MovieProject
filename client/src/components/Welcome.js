@@ -25,7 +25,7 @@ const Welcome = () => {
         </NavLink>
         <NavLink
           className="fw-italic btn btn-outline-info btn-sm me-3"
-          to={'/testing'}
+          to={'/top'}
         >
           View 12 Current Popular Movies
         </NavLink>
@@ -37,11 +37,7 @@ const Welcome = () => {
         </NavLink>
       </nav>
       <div>
-        <img
-          className="homeImage"
-          src={Reel}
-          alt="Movie Reel"
-        />
+        <img className="homeImage" src={Reel} alt="Movie Reel" />
       </div>
     </div>
   );
