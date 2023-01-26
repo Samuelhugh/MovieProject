@@ -51,14 +51,14 @@ const Header = () => {
           <nav className="nav mt-1">
             <NavLink
               style={{ 'font-size': 'small' }}
-              className="fw-light btn btn-light text-dark btn-sm me-3"
+              className="fw-normal btn btn-dark text-light btn-sm me-3"
               to={'/homepage'}
             >
               Dashboard
             </NavLink>
             <NavLink
               style={{ 'font-size': 'small' }}
-              className="fw-light btn btn-light text-dark btn-sm me-3"
+              className="fw-normal btn btn-dark text-light btn-sm me-3"
               to={'/homepage/new'}
             >
               Create New Movie Suggestion
@@ -66,7 +66,7 @@ const Header = () => {
             {user ? (
               <button
                 style={{ 'font-size': 'small' }}
-                className="fw-light btn btn-light text-dark btn-sm me-3"
+                className="fw-normal btn btn-dark text-light btn-sm me-3"
                 onClick={(e) => handleLogout(e)}
               >
                 Logout

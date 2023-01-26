@@ -52,7 +52,7 @@ const Login = () => {
             <label className="fw-italic text-light">E-mail Address</label>
             <input
               className="fw-italic form-control"
-              placeholder="Email@gmail.com"
+              placeholder="E-mail@gmail.com"
               aria-label="Email"
               type="email"
               name="email"

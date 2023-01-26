@@ -35,7 +35,7 @@ const AllMovies = (props) => {
   return (
     <>
       <Header />
-      <h4 className="textLine fw-light mt-2 text-info fw-light">
+      <h4 className="textLine fw-light mt-2 text-dark fw-light">
         Movies Are In Chronological Order
       </h4>
       <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">

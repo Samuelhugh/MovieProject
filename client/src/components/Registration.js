@@ -144,7 +144,7 @@ const Register = () => {
             ) : null}
             <input
               className="fw-italic form-control"
-              placeholder="Email@gmail.com"
+              placeholder="E-mail@gmail.com"
               aria-label="Email"
               type="email"
               name="email"
