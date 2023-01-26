@@ -21,7 +21,7 @@ function App() {
     <GlobalProvider>
       <div className="App">
         <Routes>
-          <Route element={<Test />} path="/testing" />
+          <Route element={<Test />} path="/top" />
           <Route element={<AltAllMovies />} path="/alt" />
           <Route element={<Welcome />} path="/" default />
           <Route element={<Registration />} path="/registration" />
